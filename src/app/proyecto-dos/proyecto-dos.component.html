@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-title>{{ question }}</mat-card-title>
+
+  <form
+    action=""
+    [formGroup]="surveyForm"
+    (ngSubmit)="submit()"
+    class="survey-form"
+  >
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      formControlName="favoriteLanguje"
+    >
+      @for (option of options; track option) {
+      <mat-radio-button class="example-radio-button" [value]="option">{{
+        option
+      }}</mat-radio-button>
+      }
+    </mat-radio-group>
+
+    <button mat-raised-button color="primary">Enviar</button>
+  </form>
+
+  <div *ngIf="HasResult" class="results-container">
+    <h3>Resultados</h3>
+    <pre>
+        {{ results | json }}
+    </pre>
+  </div>
+</mat-card>
